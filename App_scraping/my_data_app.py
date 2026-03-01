@@ -359,14 +359,19 @@ elif choice == "📊 Dashboard":
     df_autre = df_clean[['nom', 'prix', 'adresse','image_lien']]
     
     if not df_autre.empty:
-        # --- STYLE : Métriques en colonnes avec icônes ---
         st.markdown("### 📈 Statistiques Clés")
         m1, m2, m3 = st.columns(3)
         m1.metric("Total Animaux", f"{len(df_autre)} têtes", "🐑")
         
-        # Simulation d'un prix moyen (si ta colonne prix est nettoyée)
-        m2.metric("Prix Max", f"{df_autre['prix'].max()}", "💰")
-        m3.metric("Localisation Top", df_autre['adresse'].mode()[0], "📍")
+        # Sécurisation du Prix Max
+        max_prix = df_autre['prix'].max() if not df_autre['prix'].isnull().all() else "N/A"
+        m2.metric("Prix Max", f"{max_prix}", "💰")
+        
+        # Sécurisation de la Localisation (La source de l'erreur)
+        mode_adresse = df_autre['adresse'].mode()
+        top_loc = mode_adresse[0] if not mode_adresse.empty else "Inconnue"
+        m3.metric("Localisation Top", top_loc, "📍")
+
     
         st.divider()
     
