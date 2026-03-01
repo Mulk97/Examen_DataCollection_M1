@@ -59,7 +59,7 @@ elif choice == "🌐 Scraping Direct With BeautifulSoup":
             
             # 1. S'assurer que la table existe
             with conn.session as s:
-                s.execute(text("""CREATE TABLE IF NOT EXISTS Chien (nom TEXT, prix TEXT, adresse TEXT, image_lien TEXT)"""))
+                s.execute(text("CREATE TABLE IF NOT EXISTS Chien (nom TEXT, prix TEXT, adresse TEXT, image_lien TEXT)"))
                 s.commit()
     
             for index_page in range(1, pages + 1):
