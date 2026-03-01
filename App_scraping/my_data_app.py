@@ -106,7 +106,7 @@ elif choice == "🌐 Scraping Direct With BeautifulSoup":
 # ======================================================
 
 
-    if animal_choisi == "Mouton":
+    elif animal_choisi == "Mouton":
         pages = st.number_input("Nombre de pages à scraper", min_value=1, max_value=10, value=1)
         
         if st.button("Lancer le Scraping"):
@@ -159,7 +159,7 @@ elif choice == "🌐 Scraping Direct With BeautifulSoup":
 
 # ======================================================
 
-    if animal_choisi == "Poules Lapins et Pigeons":
+    elif animal_choisi == "Poules Lapins et Pigeons":
         pages = st.number_input("Nombre de pages à scraper", min_value=1, max_value=10, value=1)
         
         if st.button("Lancer le Scraping"):
@@ -212,7 +212,7 @@ elif choice == "🌐 Scraping Direct With BeautifulSoup":
 
     # ===========================================================================
 
-    if animal_choisi == "Autres animaux":
+    elif animal_choisi == "Autres animaux":
         pages = st.number_input("Nombre de pages à scraper", min_value=1, max_value=10, value=1)
         
         if st.button("Lancer le Scraping"):
