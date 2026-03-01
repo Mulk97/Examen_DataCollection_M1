@@ -324,7 +324,7 @@ elif choice == "📊 Dashboard":
     st.title("Tableau de bord des données nettoyées")
     
     # Chargement des données
-    df_clean = conn.query("SELECT * FROM Chien") # Remplacez par votre table
+    df_clean = pd.read_csv('data_web_scraper/CoinAfrique_Data_Chien.csv')
     
     if not df_clean.empty:
         col1, col2 = st.columns(2)
@@ -339,7 +339,7 @@ elif choice == "📊 Dashboard":
 
 
     # Chargement des données
-    df_clean = conn.query("SELECT * FROM AutresAnimaux") # Remplacez par votre table
+    df_clean = pd.read_csv('data_web_scraper/CoinAfrique_Data_Moutons.csv')
     
     if not df_clean.empty:
         col1, col2 = st.columns(2)
@@ -353,7 +353,7 @@ elif choice == "📊 Dashboard":
         st.warning("Aucune donnée nettoyée disponible.")
 
     # Lecture des données
-    df_clean = conn.query("SELECT * FROM AutresAnimaux")
+    df_clean = pd.read_csv('data_web_scraper/CoinAfrique_Data_AutresAnimaux.csv')
     
     if not df_clean.empty:
         # --- STYLE : Métriques en colonnes avec icônes ---
