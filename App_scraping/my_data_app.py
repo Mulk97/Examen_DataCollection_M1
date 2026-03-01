@@ -274,7 +274,7 @@ elif choice == "📁 Import Web Scraper":
     if st.button("Chien"):
         st.info("Récupérez ici les fichiers issus de l'extension 'Web Scraper' (non nettoyés).")
         try:
-            df_chien = pd.read_csv('../data_web_scraper/CoinAfrique_Data_Chien.csv')
+            df_chien = pd.read_csv('data_web_scraper/CoinAfrique_Data_Chien.csv')
             st.write("Données locales chargées.")
             st.dataframe(df_chien)
         except FileNotFoundError:
@@ -286,7 +286,7 @@ elif choice == "📁 Import Web Scraper":
     elif st.button("Mouton"):
         st.info("Récupérez ici les fichiers issus de l'extension 'Web Scraper' (non nettoyés).")
         try:
-            df_mouton = pd.read_csv(r'C:\Users\MULK\DATACOLLECTION\data_web_scraper\CoinAfrique_Data_Moutons.csv')
+            df_mouton = pd.read_csv('data_web_scraper/CoinAfrique_Data_Moutons.csv')
             st.write("Données locales chargées.")
             st.dataframe(df_mouton)
         except FileNotFoundError:
@@ -298,7 +298,7 @@ elif choice == "📁 Import Web Scraper":
     elif st.button("Poules Lapins et Pigeons"):
         st.info("Récupérez ici les fichiers issus de l'extension 'Web Scraper' (non nettoyés).")
         try:
-            df_poulapi = pd.read_csv(r'C:\Users\MULK\DATACOLLECTION\data_web_scraper\CoinAfrique_Data_PouLaPi.csv')
+            df_poulapi = pd.read_csv('data_web_scraper/CoinAfrique_Data_PouLaPi.csv')
             st.write("Données locales chargées.")
             st.dataframe(df_poulapi)
         except FileNotFoundError:
@@ -310,7 +310,7 @@ elif choice == "📁 Import Web Scraper":
     elif st.button("Autres animaux"):
         st.info("Récupérez ici les fichiers issus de l'extension 'Web Scraper' (non nettoyés).")
         try:
-            df_autresanimaux = pd.read_csv(r'C:\Users\MULK\DATACOLLECTION\data_web_scraper\CoinAfrique_Data_AutresAnimaux.csv')
+            df_autresanimaux = pd.read_csv('data_web_scraper/CoinAfrique_Data_AutresAnimaux.csv')
             st.write("Données locales chargées.")
             st.dataframe(df_autresanimaux)
         except FileNotFoundError:
