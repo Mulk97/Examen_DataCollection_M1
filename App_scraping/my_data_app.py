@@ -274,7 +274,7 @@ elif choice == "📁 Import Web Scraper":
     if st.button("Chien"):
         st.info("Récupérez ici les fichiers issus de l'extension 'Web Scraper' (non nettoyés).")
         try:
-            df_chien = pd.read_csv(r'..\data_web_scraper\CoinAfrique_Data_Chien.csv')
+            df_chien = pd.read_csv('../data_web_scraper/CoinAfrique_Data_Chien.csv')
             st.write("Données locales chargées.")
             st.dataframe(df_chien)
         except FileNotFoundError:
