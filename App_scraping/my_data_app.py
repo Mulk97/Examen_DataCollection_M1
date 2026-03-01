@@ -325,61 +325,64 @@ elif choice == "📊 Dashboard":
     
     # Chargement des données
     df_clean = pd.read_csv('data_web_scraper/CoinAfrique_Data_Chien.csv')
+    df_chien = df_clean[['nom', 'prix', 'adresse','image_lien']]
     
-    if not df_clean.empty:
+    if not df_chien.empty:
         col1, col2 = st.columns(2)
         with col1:
-            st.metric("Total Animaux", len(df_clean))
-            st.bar_chart(df_clean['nom'].value_counts()) # Exemple
+            st.metric("Total Animaux", len(df_chien))
+            st.bar_chart(df_chien['nom'].value_counts()) # Exemple
         with col2:
             st.write("Aperçu des données")
-            st.dataframe(df_clean)
+            st.dataframe(df_chien)
     else:
         st.warning("Aucune donnée nettoyée disponible.")
 
 
     # Chargement des données
     df_clean = pd.read_csv('data_web_scraper/CoinAfrique_Data_Moutons.csv')
+    df_mouton = df_clean[['nom', 'prix', 'adresse','image_lien']]
     
-    if not df_clean.empty:
+    if not df_mouton.empty:
         col1, col2 = st.columns(2)
         with col1:
-            st.metric("Total Animaux", len(df_clean))
-            st.bar_chart(df_clean['nom'].value_counts()) # Exemple
+            st.metric("Total Animaux", len(df_mouton))
+            st.bar_chart(df_mouton['nom'].value_counts()) # Exemple
         with col2:
             st.write("Aperçu des données")
-            st.dataframe(df_clean)
+            st.dataframe(df_mouton)
     else:
         st.warning("Aucune donnée nettoyée disponible.")
 
     # Lecture des données
     df_clean = pd.read_csv('data_web_scraper/CoinAfrique_Data_AutresAnimaux.csv')
+    df_autre = df_clean[['nom', 'prix', 'adresse','image_lien']]
     
-    if not df_clean.empty:
+    if not df_autre.empty:
         # --- STYLE : Métriques en colonnes avec icônes ---
         st.markdown("### 📈 Statistiques Clés")
         m1, m2, m3 = st.columns(3)
-        m1.metric("Total Animaux", f"{len(df_clean)} têtes", "🐑")
+        m1.metric("Total Animaux", f"{len(df_autre)} têtes", "🐑")
         
         # Simulation d'un prix moyen (si ta colonne prix est nettoyée)
-        m2.metric("Prix Max", f"{df_clean['prix'].max()}", "💰")
-        m3.metric("Localisation Top", df_clean['adresse'].mode()[0], "📍")
+        m2.metric("Prix Max", f"{df_autre['prix'].max()}", "💰")
+        m3.metric("Localisation Top", df_autre['adresse'].mode()[0], "📍")
     
         st.divider()
     
         # --- LOOK 1 : Graphique Interactif (Plotly) ---
         st.subheader("📊 Répartition par Localité")
-        fig = px.pie(df_clean, names='adresse', hole=0.4, color_discrete_sequence=px.colors.sequential.RdBu)
+        fig = px.pie(df_autre, names='adresse', hole=0.4, color_discrete_sequence=px.colors.sequential.RdBu)
         st.plotly_chart(fig, use_container_width=True)
     
         # --- LOOK 2 : Affichage en mode "Catalogue / Galerie" ---
         st.subheader("🖼️ Galerie des Annonces")
 
         # On limite le choix entre 3 et le maximum disponible
-        nb_a_afficher = st.slider("Nombre d'annonces à afficher", 3, len(df_clean), 6)
+        nb_a_afficher = st.slider("Nombre d'annonces à afficher", 3, len(df_autre), 6)
         
         # On ne prend que les 'n' premières lignes
-        df_selection = df_clean.head(nb_a_afficher)
+        df_selection = df_autre.head(nb_a_afficher)
         
         cols = st.columns(3)
         for i, row in df_selection.iterrows():
