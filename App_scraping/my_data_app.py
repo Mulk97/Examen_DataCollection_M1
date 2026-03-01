@@ -70,13 +70,19 @@ elif choice == "🌐 Scraping Direct With BeautifulSoup":
                 containers = soup.find_all('div','col s6 m4 l3')
                 
                 for container in containers:
+                    # Remplacez cette partie dans vos boucles :
                     try:
                         nom = container.find('p','ad__card-description').a.text.strip()
                         prix = container.find('p','ad__card-price').a.text.strip()
-                        adresse = container.find('p','ad__card-location').span.text.strip()
+                        
+                        # --- LA CORRECTION EST ICI ---
+                        loc_tag = container.find('p','ad__card-location')
+                        # On vérifie si span existe, sinon on prend le texte du paragraphe directement
+                        adresse = loc_tag.span.text.strip() if loc_tag.span else loc_tag.text.strip()
+                        # -----------------------------
+                        
                         image_lien = container.find('img','ad__card-img')['src']
-            
-                        # 2. Utiliser la syntaxe text() et les paramètres nommés (plus robuste)
+                    
                         with conn.session as s:
                             s.execute(
                                 text("INSERT INTO Chien (nom, prix, adresse, image_lien) VALUES (:n, :p, :a, :i)"),
@@ -84,8 +90,24 @@ elif choice == "🌐 Scraping Direct With BeautifulSoup":
                             )
                             s.commit()
                     except Exception as e:
-                        # On affiche l'erreur si l'extraction d'une ligne échoue
                         st.warning(f"Erreur sur une ligne : {e}")
+
+                    # try:
+                    #     nom = container.find('p','ad__card-description').a.text.strip()
+                    #     prix = container.find('p','ad__card-price').a.text.strip()
+                    #     adresse = container.find('p','ad__card-location').span.text.strip()
+                    #     image_lien = container.find('img','ad__card-img')['src']
+            
+                    #     # 2. Utiliser la syntaxe text() et les paramètres nommés (plus robuste)
+                    #     with conn.session as s:
+                    #         s.execute(
+                    #             text("INSERT INTO Chien (nom, prix, adresse, image_lien) VALUES (:n, :p, :a, :i)"),
+                    #             {"n": nom, "p": prix, "a": adresse, "i": image_lien}
+                    #         )
+                    #         s.commit()
+                    # except Exception as e:
+                    #     # On affiche l'erreur si l'extraction d'une ligne échoue
+                    #     st.warning(f"Erreur sur une ligne : {e}")
     
             st.success("✅ Scraping terminé et données enregistrées !")
     
