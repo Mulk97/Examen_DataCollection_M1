@@ -87,20 +87,20 @@ elif choice == "🌐 Scraping Direct With BeautifulSoup":
                         # On affiche l'erreur si l'extraction d'une ligne échoue
                         st.warning(f"Erreur sur une ligne : {e}")
     
-        st.success("✅ Scraping terminé et données enregistrées !")
-
-        # 3. AFFICHAGE IMMÉDIAT
-        st.subheader("📋 Contenu actuel de la table Chien")
-        df_chien = conn.query("SELECT * FROM Chien")
-        
-        if not df_chien.empty:
-            st.dataframe(
-                df_chien, 
-                column_config={"image_lien": st.column_config.ImageColumn("Photo")},
-                use_container_width=True
-            )
-        else:
-            st.error("La table est vide malgré le scraping. Vérifiez les balises HTML.")
+            st.success("✅ Scraping terminé et données enregistrées !")
+    
+            # 3. AFFICHAGE IMMÉDIAT
+            st.subheader("📋 Contenu actuel de la table Chien")
+            df_chien = conn.query("SELECT * FROM Chien")
+            
+            if not df_chien.empty:
+                st.dataframe(
+                    df_chien, 
+                    column_config={"image_lien": st.column_config.ImageColumn("Photo")},
+                    use_container_width=True
+                )
+            else:
+                st.error("La table est vide malgré le scraping. Vérifiez les balises HTML.")
 
 
 # ======================================================
@@ -144,18 +144,18 @@ elif choice == "🌐 Scraping Direct With BeautifulSoup":
     
             st.success("✅ Scraping terminé et données enregistrées !")
         
-        # 3. AFFICHAGE IMMÉDIAT
-        st.subheader("📋 Contenu actuel de la table Mouton")
-        df_mouton = conn.query("SELECT * FROM Mouton")
-        
-        if not df_mouton.empty:
-            st.dataframe(
-                df_mouton, 
-                column_config={"image_lien": st.column_config.ImageColumn("Photo")},
-                use_container_width=True
-            )
-        else:
-            st.error("La table est vide malgré le scraping. Vérifiez les balises HTML.")
+            # 3. AFFICHAGE IMMÉDIAT
+            st.subheader("📋 Contenu actuel de la table Mouton")
+            df_mouton = conn.query("SELECT * FROM Mouton")
+            
+            if not df_mouton.empty:
+                st.dataframe(
+                    df_mouton, 
+                    column_config={"image_lien": st.column_config.ImageColumn("Photo")},
+                    use_container_width=True
+                )
+            else:
+                st.error("La table est vide malgré le scraping. Vérifiez les balises HTML.")
 
 # ======================================================
 
@@ -195,20 +195,20 @@ elif choice == "🌐 Scraping Direct With BeautifulSoup":
                         # On affiche l'erreur si l'extraction d'une ligne échoue
                         st.warning(f"Erreur sur une ligne : {e}")
     
-        st.success("✅ Scraping terminé et données enregistrées !")
-
-        # 3. AFFICHAGE IMMÉDIAT
-        st.subheader("📋 Contenu actuel de la table Poules Lapins et Pigeons")
-        df_poulapi = conn.query("SELECT * FROM PouLaPi")
-        
-        if not df_poulapi.empty:
-            st.dataframe(
-                df_poulapi, 
-                column_config={"image_lien": st.column_config.ImageColumn("Photo")},
-                use_container_width=True
-            )
-        else:
-            st.error("La table est vide malgré le scraping. Vérifiez les balises HTML.")
+            st.success("✅ Scraping terminé et données enregistrées !")
+    
+            # 3. AFFICHAGE IMMÉDIAT
+            st.subheader("📋 Contenu actuel de la table Poules Lapins et Pigeons")
+            df_poulapi = conn.query("SELECT * FROM PouLaPi")
+            
+            if not df_poulapi.empty:
+                st.dataframe(
+                    df_poulapi, 
+                    column_config={"image_lien": st.column_config.ImageColumn("Photo")},
+                    use_container_width=True
+                )
+            else:
+                st.error("La table est vide malgré le scraping. Vérifiez les balises HTML.")
 
     # ===========================================================================
 
@@ -232,7 +232,7 @@ elif choice == "🌐 Scraping Direct With BeautifulSoup":
                 
                 for container in containers:
                     try:
-                        details = container.find('p','ad__card-description').a.text.strip()
+                        nom = container.find('p','ad__card-description').a.text.strip()
                         prix = container.find('p','ad__card-price').a.text.strip()
                         adresse = container.find('p','ad__card-location').span.text.strip()
                         image_lien = container.find('img','ad__card-img')['src']
@@ -248,20 +248,20 @@ elif choice == "🌐 Scraping Direct With BeautifulSoup":
                         # On affiche l'erreur si l'extraction d'une ligne échoue
                         st.warning(f"Erreur sur une ligne : {e}")
     
-        st.success("✅ Scraping terminé et données enregistrées !")
-
-        # 3. AFFICHAGE IMMÉDIAT
-        st.subheader("📋 Contenu actuel de la table Autres animaux")
-        df_autresanimaux = conn.query("SELECT * FROM AutresAnimaux")
-        
-        if not df_autresanimaux.empty:
-            st.dataframe(
-                df_autresanimaux, 
-                column_config={"image_lien": st.column_config.ImageColumn("Photo")},
-                use_container_width=True
-            )
-        else:
-            st.error("La table est vide malgré le scraping. Vérifiez les balises HTML.")
+            st.success("✅ Scraping terminé et données enregistrées !")
+    
+            # 3. AFFICHAGE IMMÉDIAT
+            st.subheader("📋 Contenu actuel de la table Autres animaux")
+            df_autresanimaux = conn.query("SELECT * FROM AutresAnimaux")
+            
+            if not df_autresanimaux.empty:
+                st.dataframe(
+                    df_autresanimaux, 
+                    column_config={"image_lien": st.column_config.ImageColumn("Photo")},
+                    use_container_width=True
+                )
+            else:
+                st.error("La table est vide malgré le scraping. Vérifiez les balises HTML.")
 
 # =============================================================
     
